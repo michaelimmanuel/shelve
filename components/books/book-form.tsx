@@ -9,7 +9,7 @@ import { MarkdownEditor } from './markdown-editor';
 import { CoverImagePreview } from './cover-image-preview';
 import { createBookAction, updateBookAction } from '@/lib/actions/books';
 import { isValidISBN, cleanISBN, getOpenLibraryCoverUrl, fetchBookMetadata } from '@/lib/utils/covers';
-import type { Book } from '@/lib/types/book';
+import type { Book, ReadingStatus } from '@/lib/types/book';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 
 interface BookFormProps {
@@ -211,7 +211,7 @@ export function BookForm({ book, mode }: BookFormProps) {
             <select
               id="status"
               value={formData.status}
-              onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+              onChange={(e) => setFormData({ ...formData, status: e.target.value as ReadingStatus })}
               className="flex h-10 w-full rounded-md border border-foreground/20 bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               required
             >

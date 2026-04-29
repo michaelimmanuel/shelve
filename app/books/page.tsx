@@ -9,7 +9,7 @@ export default async function BooksPage() {
   const books = result.success ? result.data : [];
 
   // Serialize books for client component (convert ObjectId to string)
-  const serializedBooks = books.map(book => ({
+  const serializedBooks = (books || []).map(book => ({
     ...book,
     _id: book._id.toString(),
     createdAt: book.createdAt.toISOString(),
@@ -58,7 +58,7 @@ export default async function BooksPage() {
         </div>
 
         {/* Books Grid or Empty State */}
-        {books.length === 0 ? (
+        {(books || []).length === 0 ? (
           <div className="text-center py-24 animate-fade-in-up">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent-light/20 mb-6">
               <BookOpen className="w-10 h-10 text-accent" strokeWidth={1.5} />

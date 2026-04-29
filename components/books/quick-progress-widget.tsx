@@ -79,7 +79,7 @@ export function QuickProgressWidget({
         setError('');
         window.location.reload(); // Simple reload to show updated data
       } else {
-        setError(result.error || 'Failed to update progress');
+        setError('error' in result && result.error ? result.error : 'Failed to update progress');
       }
     } catch (err) {
       setError('Failed to update progress');
