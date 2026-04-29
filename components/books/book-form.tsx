@@ -109,8 +109,8 @@ export function BookForm({ book, mode }: BookFormProps) {
         : await updateBookAction(book!._id.toString(), bookData);
 
       if (result.success) {
-        router.push('/books');
         router.refresh();
+        router.push('/books');
       } else {
         setError(result.error || 'An error occurred');
       }

@@ -4,6 +4,9 @@ import { BooksFilter } from '@/components/books/books-filter';
 import { getBooksAction } from '@/lib/actions/books';
 import { BookOpen, Plus } from 'lucide-react';
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = 'force-dynamic';
+
 export default async function BooksPage() {
   const result = await getBooksAction();
   const books = result.success ? result.data : [];
