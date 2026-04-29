@@ -69,46 +69,46 @@ export function BookCard({ book }: BookCardProps) {
         ) : (
           // Fallback when no cover or error
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-foreground/10 to-foreground/20">
-            <BookOpen className="w-16 h-16 text-foreground/30" />
+            <BookOpen className="w-12 h-12 sm:w-16 sm:h-16 text-foreground/30" />
           </div>
         )}
 
         {/* Status Badge */}
-        <div className="absolute top-3 right-3 z-10">
-          <div className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg shadow-lg ${status.color} backdrop-blur-sm`}>
-            <StatusIcon className="w-3.5 h-3.5" strokeWidth={2.5} />
-            <span className="text-xs font-semibold">{status.label}</span>
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
+          <div className={`flex items-center gap-1 sm:gap-1.5 px-1.5 py-1 sm:px-2.5 sm:py-1.5 rounded-md sm:rounded-lg shadow-lg ${status.color} backdrop-blur-sm`}>
+            <StatusIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={2.5} />
+            <span className="text-[10px] sm:text-xs font-semibold hidden sm:inline">{status.label}</span>
           </div>
         </div>
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 sm:p-4">
           {/* Title */}
-          <h3 className="text-white font-bold text-lg leading-tight mb-2 line-clamp-3">
+          <h3 className="text-white font-bold text-sm sm:text-lg leading-tight mb-1.5 sm:mb-2 line-clamp-3">
             {book.title}
           </h3>
 
           {/* Author */}
           {book.author && (
-            <p className="text-white/80 text-sm mb-3 line-clamp-1">
+            <p className="text-white/80 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-1">
               {book.author}
             </p>
           )}
 
           {/* Categories */}
           {book.categories.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
-              {book.categories.slice(0, 3).map((category) => (
+            <div className="flex flex-wrap gap-1 sm:gap-1.5">
+              {book.categories.slice(0, 2).map((category) => (
                 <span
                   key={category}
-                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-sm text-xs font-medium text-white border border-white/30"
+                  className="inline-flex items-center px-1.5 py-0.5 sm:px-2 rounded-md bg-white/20 backdrop-blur-sm text-[10px] sm:text-xs font-medium text-white border border-white/30"
                 >
                   {category}
                 </span>
               ))}
-              {book.categories.length > 3 && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-sm text-xs font-medium text-white border border-white/30">
-                  +{book.categories.length - 3}
+              {book.categories.length > 2 && (
+                <span className="inline-flex items-center px-1.5 py-0.5 sm:px-2 rounded-md bg-white/20 backdrop-blur-sm text-[10px] sm:text-xs font-medium text-white border border-white/30">
+                  +{book.categories.length - 2}
                 </span>
               )}
             </div>
@@ -116,18 +116,18 @@ export function BookCard({ book }: BookCardProps) {
 
           {/* Tags (if no categories) */}
           {book.categories.length === 0 && book.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
-              {book.tags.slice(0, 3).map((tag) => (
+            <div className="flex flex-wrap gap-1 sm:gap-1.5">
+              {book.tags.slice(0, 2).map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-sm text-xs font-medium text-white border border-white/30"
+                  className="inline-flex items-center px-1.5 py-0.5 sm:px-2 rounded-md bg-white/20 backdrop-blur-sm text-[10px] sm:text-xs font-medium text-white border border-white/30"
                 >
                   {tag}
                 </span>
               ))}
-              {book.tags.length > 3 && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-white/20 backdrop-blur-sm text-xs font-medium text-white border border-white/30">
-                  +{book.tags.length - 3}
+              {book.tags.length > 2 && (
+                <span className="inline-flex items-center px-1.5 py-0.5 sm:px-2 rounded-md bg-white/20 backdrop-blur-sm text-[10px] sm:text-xs font-medium text-white border border-white/30">
+                  +{book.tags.length - 2}
                 </span>
               )}
             </div>
@@ -135,14 +135,14 @@ export function BookCard({ book }: BookCardProps) {
 
           {/* Reading Progress Bar (only for 'reading' status) */}
           {book.progress.status === 'reading' && book.progress.totalPages && book.progress.currentPage && (
-            <div className="mt-3 pt-3 border-t border-white/20">
-              <div className="flex justify-between items-center text-xs text-white/90 mb-1.5">
+            <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/20">
+              <div className="flex justify-between items-center text-[10px] sm:text-xs text-white/90 mb-1 sm:mb-1.5">
                 <span>Progress</span>
                 <span className="font-semibold">
                   {Math.round((book.progress.currentPage / book.progress.totalPages) * 100)}%
                 </span>
               </div>
-              <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+              <div className="w-full h-1 sm:h-1.5 bg-white/20 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-white rounded-full transition-all duration-300"
                   style={{

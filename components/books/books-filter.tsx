@@ -38,7 +38,7 @@ export function BooksFilter({ books }: BooksFilterProps) {
   return (
     <div>
       {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
         {filters.map((filter) => {
           const count = filter.value === 'all'
             ? books.length
@@ -48,14 +48,14 @@ export function BooksFilter({ books }: BooksFilterProps) {
             <button
               key={filter.value}
               onClick={() => setActiveFilter(filter.value)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                 activeFilter === filter.value
                   ? 'bg-accent text-white shadow-md shadow-accent/20'
                   : 'bg-card/60 text-foreground/70 hover:bg-card hover:text-foreground border border-border'
               }`}
             >
               {filter.label}
-              <span className="ml-2 opacity-70">({count})</span>
+              <span className="ml-1.5 sm:ml-2 opacity-70">({count})</span>
             </button>
           );
         })}
@@ -67,7 +67,7 @@ export function BooksFilter({ books }: BooksFilterProps) {
           <p className="text-foreground/60">No books found in this category.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 stagger-children">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-6 stagger-children">
           {filteredBooks.map((book) => (
             <BookCard key={book._id} book={book} />
           ))}

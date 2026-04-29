@@ -32,29 +32,29 @@ export default async function BooksPage() {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-accent-light/15 via-transparent to-transparent blur-3xl" />
       </div>
 
-      <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto py-6 sm:py-12 px-3 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="mb-16 animate-fade-in-up">
-          <div className="flex items-start justify-between gap-8 mb-8">
+        <div className="mb-8 sm:mb-16 animate-fade-in-up">
+          <div className="flex items-start justify-between gap-3 sm:gap-8 mb-6 sm:mb-8">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-3">
-                <BookOpen className="w-8 h-8 text-accent" strokeWidth={1.5} />
-                <h1 className="text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-accent" strokeWidth={1.5} />
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
                   My Library
                 </h1>
               </div>
-              <p className="text-lg text-foreground/60 max-w-2xl">
+              <p className="text-sm sm:text-lg text-foreground/60 max-w-2xl">
                 A curated collection of literary journeys, insights, and discoveries
               </p>
             </div>
 
-            <Link href="/books/new">
+            <Link href="/books/new" className="shrink-0">
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent-dark text-white shadow-lg shadow-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5"
+                className="bg-accent hover:bg-accent-dark text-white shadow-lg shadow-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:-translate-y-0.5 h-9 sm:h-11 px-3 sm:px-4 text-sm sm:text-base"
               >
-                <Plus className="w-5 h-5 mr-2" />
-                Add Book
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-2" />
+                <span className="hidden sm:inline">Add Book</span>
               </Button>
             </Link>
           </div>
@@ -62,12 +62,12 @@ export default async function BooksPage() {
 
         {/* Books Grid or Empty State */}
         {(books || []).length === 0 ? (
-          <div className="text-center py-24 animate-fade-in-up">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent-light/20 mb-6">
-              <BookOpen className="w-10 h-10 text-accent" strokeWidth={1.5} />
+          <div className="text-center py-16 sm:py-24 animate-fade-in-up px-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent-light/20 mb-4 sm:mb-6">
+              <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-accent" strokeWidth={1.5} />
             </div>
-            <h2 className="text-3xl font-serif font-bold mb-4 text-foreground">Your Library Awaits</h2>
-            <p className="text-lg text-foreground/60 mb-8 max-w-md mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-3 sm:mb-4 text-foreground">Your Library Awaits</h2>
+            <p className="text-sm sm:text-lg text-foreground/60 mb-6 sm:mb-8 max-w-md mx-auto">
               Begin your literary journey by adding your first book. Track progress, capture insights, and build your personal collection.
             </p>
             <Link href="/books/new">
